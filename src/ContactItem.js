@@ -1,35 +1,38 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Link } from "react-router-dom";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  Button,
+} from "reactstrap";
 import classes from "./ContactItem.module.css";
-function ContactItem(props) {
+const ContactItem = (props) => {
+  // let email="mailto:"+{props.email}
+
   return (
-    <Container fluid>
-      <Row>
-        <Col xs={12}>
-          <Card className={classes.card__body} style={{ width: "18rem" }}>
-            <Card.Img
-              className={classes.card__image}
-              variant="top"
-              src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-            />
-            <Card.Body>
-              <b>
-                <Card.Text>Name: {props.name}</Card.Text>
-              </b>
-              <Card.Text>Username: {props.username}</Card.Text>
-              <Card.Text>Company: {props.company.name}</Card.Text>
-              <Card.Text>Address: {props.address.city}</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Card className={classes.card__body}>
+      <CardImg
+        top
+        className={classes.card__image}
+        src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
+        alt="Contact Image"
+      />
+      <CardBody>
+        <CardTitle tag="h5">Name: {props.name}</CardTitle>
+        <CardText>Username: {props.username}</CardText>
+        <CardText>Company: {props.company.name}</CardText>
+        <CardText>Address: {props.address.city}</CardText>
+        <CardText>Phone: {props.phone}</CardText>
+        <CardText>E-Mail: {props.email}</CardText>
+        <Link to={props.website} target="_blank">
+          <Button>WEBSITE</Button>
+        </Link>
+      </CardBody>
+    </Card>
   );
-}
+};
 
 export default ContactItem;

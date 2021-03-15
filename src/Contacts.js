@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ContactItem from "./ContactItem";
+import { Row, Col } from "reactstrap";
 export default class Contacts extends Component {
   state = {
     contactData: null,
@@ -24,29 +25,31 @@ export default class Contacts extends Component {
 
   render() {
     let allContacts = null;
-    let i = 0;
     if (
       this.state.contactData !== null &&
       this.state.contactData !== "NoData"
     ) {
       allContacts = this.state.contactData.map((item) => {
-        console.log(item);
+        console.log(item.website);
         if (true) {
           return (
-            <div key={item.id}>
-              <ContactItem 
-              name={item.name}
-              username={item.username}
-              address={item.address}
-              company={item.company}              
+            <Col key={item.id} xs="12" sm="6" md="4">
+              <ContactItem
+                name={item.name}
+                username={item.username}
+                address={item.address}
+                company={item.company}
+                phone={item.phone}
+                email={item.email}
+                website={item.website}
               />
-            </div>
+            </Col>
           );
         } else {
           return <></>;
         }
       });
     }
-    return <div>{allContacts}</div>;
+    return <Row>{allContacts}</Row>;
   }
 }
