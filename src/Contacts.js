@@ -24,19 +24,26 @@ export default class Contacts extends Component {
 
   render() {
     let allContacts = null;
-    let i=0;
+    let i = 0;
     if (
       this.state.contactData !== null &&
       this.state.contactData !== "NoData"
     ) {
-        console.log("Mera data ", this.state.contactData[i].id);
-      allContacts = this.state.contactData.map((offer) => {
+      allContacts = this.state.contactData.map((item) => {
+        console.log(item);
         if (true) {
-          return (<div><h1>{this.state.contactData[i++].id}</h1>
-            <ContactItem key={this.state.contactData.id}/>
-        </div>)
+          return (
+            <div key={item.id}>
+              <ContactItem 
+              name={item.name}
+              username={item.username}
+              address={item.address}
+              company={item.company}              
+              />
+            </div>
+          );
         } else {
-          return null;
+          return <></>;
         }
       });
     }
